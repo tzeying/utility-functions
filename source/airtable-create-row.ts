@@ -1,22 +1,14 @@
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
 const Airtable = require('airtable');
+import {headers} from './common/headers';
 
-const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Methods': '*',
-    'Access-Control-Max-Age': '2592000',
-    'Access-Control-Allow-Credentials': 'true',
-};
-
-type AirtableCreateRowRequest = {
+export type AirtableCreateRowRequest = {
     baseId: string, 
     tableName: string, 
     fields: any,
     allowCrossOrigins: boolean
 }
-export async function handler(event, context) {
+export async function handler(event: any, context: any) {
     let req: AirtableCreateRowRequest = JSON.parse(event.body);
     const base = new Airtable({apiKey: AIRTABLE_API_KEY}).base(req.baseId);
     try {

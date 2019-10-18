@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "functions:build": "netlify-lambda build source",
-    "functions:serve": "netlify-lambda serve source"
+    "functions:serve": "netlify-lambda serve source",
+    "compile-typescript": "tsc",
+    "dev": "npm run compile-typescript && netlify dev"
   },
   "repository": {
     "type": "git",
